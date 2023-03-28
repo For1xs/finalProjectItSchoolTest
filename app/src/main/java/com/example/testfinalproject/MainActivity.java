@@ -3,6 +3,8 @@ package com.example.testfinalproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private String stringDateSelected;
     private DatabaseReference eventDatabaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void calendarClicked(){
+        openSetEventFragment();
         eventDatabaseReference.child(stringDateSelected).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -70,5 +74,10 @@ public class MainActivity extends AppCompatActivity {
             eventDatabaseReference.child(stringDateSelected).setValue(event);
         });
     }
-
+    private void openSetEventFragment() {
+        SetEventFragment setEventFragment = new SetEventFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.conteinerOfFragment, setEventFragment);
+        fragmentTransaction.commit();
+    }
 }

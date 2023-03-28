@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">testFinalProject</string>
     <string name="save_event">Save Event</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="NameOfTheCompetition">Название соревнований</string>
+    <string name="distance">Дистанция</string>
+    <string name="category">Разряд</string>
+    <string name="result">Результат</string>
 </resources>
