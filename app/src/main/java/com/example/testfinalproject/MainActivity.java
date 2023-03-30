@@ -3,10 +3,11 @@ package com.example.testfinalproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -16,30 +17,34 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private CalendarView mainCalendar;
-    private Gson gson;
-    private EditText textEvent;
-    public Button saveEventButton;
+
     private DatabaseReference databaseReference;
     private String stringDateSelected;
     private DatabaseReference eventDatabaseReference;
+    View view;
+    SetEventFragment setEventFragment;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainCalendar = findViewById(R.id.mainCalendar);
-        textEvent = findViewById(R.id.textEvent);
-        saveEventButton = findViewById(R.id.saveEventButton);
+
+
         initializeMainCalendarSelectedDayChange();
         databaseReference = FirebaseDatabase.getInstance("https://final-project-test-3-eeba5-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference();
         eventDatabaseReference = databaseReference.child("Calendar");
+
 
 
     }
@@ -49,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             stringDateSelected = dayOfMonth + ":" + (month + 1) + ":" + year;
             calendarClicked();
         });
+
     }
 
     private void calendarClicked(){
@@ -57,10 +63,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.getValue() != null) {
-                    textEvent.setText(snapshot.getValue().toString());//НАДО ПОМЕНЯТЬ
+                    String a = snapshot.getValue().toString();
+                    snapshot.getValue(SetEventFragment.class);
+                    Log.d("INFO", a);
+                    //editTextNameOfTheCompetition.setText();//НАДО ПОМЕНЯТЬ
                 }
                 else {
-                    textEvent.setText("null");
+                    //textEvent.setText("null");
                 }
             }
 
@@ -68,16 +77,28 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
+
         });
-        saveEventButton.setOnClickListener(v -> {
-            String event = textEvent.getText().toString();
-            eventDatabaseReference.child(stringDateSelected).setValue(event);
-        });
-    }
+
+
+        }
+
     private void openSetEventFragment() {
         SetEventFragment setEventFragment = new SetEventFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.conteinerOfFragment, setEventFragment);
         fragmentTransaction.commit();
+
+
+
+    }
+
+    public String getStringDateSelected() {
+        return stringDateSelected;
+    }
+
+    public DatabaseReference getEventDatabaseReference() {
+        return eventDatabaseReference;
     }
 }
