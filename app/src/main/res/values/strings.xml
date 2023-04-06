@@ -6,4 +6,7 @@
     <string name="distance">Дистанция</string>
     <string name="category">Разряд</string>
     <string name="result">Результат</string>
+    <string name="yourCategory">Время</string>
+    <string name="findCategory">Узнать</string>
+    <string name="categoryRun">Категория</string>
 </resources>
