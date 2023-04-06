@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayAdapter<String> arrayAdapter;
     private List<String> listData;
     private Button goToSecondActivity;
+    private Button goToThirdActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +49,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         goToSecondActivity = findViewById(R.id.goToSecondActivity);
+        goToThirdActivity = findViewById(R.id.goToThirdActivity);
+
+
+
         mainCalendar = findViewById(R.id.mainCalendar);
         textView = findViewById(R.id.textView1);
 
 
         goToSecondActivity.setOnClickListener(v -> {
             Intent intent = new Intent(this, TimeToCategoryActivityPage2.class);
+            startActivity(intent);
+        });
+        goToThirdActivity.setOnClickListener(v ->{
+            Intent intent = new Intent(this, YourCategoryPage3.class);
             startActivity(intent);
         });
 
