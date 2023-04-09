@@ -12,6 +12,9 @@
         android:theme="@style/Theme.TestFinalProject"
         tools:targetApi="31">
         <activity
+            android:name=".CalculateTimePage4"
+            android:exported="false" />
+        <activity
             android:name=".YourCategoryPage3"
             android:exported="false" />
         <activity

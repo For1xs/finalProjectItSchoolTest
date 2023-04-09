@@ -13,16 +13,16 @@ import com.example.testfinalproject.data.RankTableWomanAutoData;
 import java.util.Objects;
 
 public class YourCategoryPage3 extends AppCompatActivity {
-    EditText distanceEditTextPage3;
-    EditText categoryRunEditTextPage3;
-    EditText resultEditTextPage3;
-    Button findResultButton;
-    TextView categoryTextView;
-    String valDistanceEditTextPage3;
-    String valCategoryRunEditTextPage3;
-    RankTableManAutoData rankTableManAutoData = new RankTableManAutoData();
-    RankTableWomanAutoData rankTableWomanAutoData = new RankTableWomanAutoData();
-    String valResultEditTextPage3;
+    private EditText distanceEditTextPage3;
+    private EditText categoryRunEditTextPage3;
+    private EditText resultEditTextPage3;
+    private Button findResultButton;
+    private TextView categoryTextView;
+    private String valDistanceEditTextPage3;
+    private String valCategoryRunEditTextPage3;
+    private final RankTableManAutoData rankTableManAutoData = new RankTableManAutoData();
+    private final RankTableWomanAutoData rankTableWomanAutoData = new RankTableWomanAutoData();
+    private String valResultEditTextPage3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

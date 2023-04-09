@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private List<String> listData;
     private Button goToSecondActivity;
     private Button goToThirdActivity;
+    private Button goToFourthActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +51,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         goToSecondActivity = findViewById(R.id.goToSecondActivity);
         goToThirdActivity = findViewById(R.id.goToThirdActivity);
-
+        goToFourthActivity = findViewById(R.id.goToFourthActivity);
 
 
         mainCalendar = findViewById(R.id.mainCalendar);
-        textView = findViewById(R.id.textView1);
 
 
         goToSecondActivity.setOnClickListener(v -> {
@@ -63,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
         });
         goToThirdActivity.setOnClickListener(v ->{
             Intent intent = new Intent(this, YourCategoryPage3.class);
+            startActivity(intent);
+        });
+        goToFourthActivity.setOnClickListener(v ->{
+            Intent intent = new Intent(this, CalculateTimePage4.class);
             startActivity(intent);
         });
 

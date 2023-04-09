@@ -9,4 +9,7 @@
     <string name="yourCategory">Время</string>
     <string name="findCategory">Узнать</string>
     <string name="categoryRun">Категория</string>
+    <string name="round">Круг</string>
+    <string name="calculate">Расчитать</string>
+    <string name="timeToRound">Время на круг</string>
 </resources>
