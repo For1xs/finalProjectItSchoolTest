@@ -49,12 +49,12 @@ public class CalculateTimePage4 extends AppCompatActivity {
             valCategoryRunEditTextPage4 = categoryRunEditTextPage4.getText().toString();
             valRoundEditTextPage4 = roundEditTextPage4.getText().toString();
 
-
+            String[] arrayOfDouble = String.valueOf(calculateTimeToRound()).split("[.]");
             if(calculateTimeToRound() == 0){
                 timeToRoundTextViewPage4.setText("Неправильные данные");
             }
             else{
-                timeToRoundTextViewPage4.setText((int) calculateTimeToRound());
+                timeToRoundTextViewPage4.setText(arrayOfDouble[0]+ "." + arrayOfDouble[1]);
             }
         });
     }
@@ -74,10 +74,7 @@ public class CalculateTimePage4 extends AppCompatActivity {
 
     private double getTime(){
         double time = 0;
-        if(getFirstIndex() == 100 || getSecondIndex() == 100 || !Objects.equals(valCategoryRunEditTextPage4, "Woman auto") || !valCategoryRunEditTextPage4.equals("Man auto")){
-            return time;
-        }
-        else{
+
             if(Objects.equals(valCategoryRunEditTextPage4, "Woman auto")){
                 time = rankTableWomanAutoData.getRankTableWomanAuto()[getFirstIndex()][getSecondIndex()];
 
@@ -86,7 +83,7 @@ public class CalculateTimePage4 extends AppCompatActivity {
                 time = rankTableManAutoData.getRankTableManAuto()[getFirstIndex()][getSecondIndex()];
 
             }
-        }
+
         return time;
     }
     private int getFirstIndex(){
