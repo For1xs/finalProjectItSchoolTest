@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         goToSecondActivity = findViewById(R.id.goToSecondActivity);
         goToThirdActivity = findViewById(R.id.goToThirdActivity);
         goToFourthActivity = findViewById(R.id.goToFourthActivity);
@@ -77,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         initializeMainCalendarSelectedDayChange();
         listData = new ArrayList<>();
         arrayAdapter = new ArrayAdapter<>(this,R.layout.dialog_set_event, listData);
-        databaseReference = FirebaseDatabase.getInstance("https://final-project-test-3-eeba5-default-rtdb.asia-southeast1.firebasedatabase.app/")
+        databaseReference = FirebaseDatabase.getInstance("https://finalprojectworkingvariant1-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference();
         eventDatabaseReference = databaseReference.child("Calendar");
 
@@ -97,20 +99,22 @@ public class MainActivity extends AppCompatActivity {
     private void calendarClicked(){
         setEventDialog();
 
-        eventDatabaseReference.child(stringDateSelected).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
+        eventDatabaseReference.child(stringDateSelected).addListenerForSingleValueEvent(new ValueEventListener() {            @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.getValue() != null) {
-
-
-//                    snapshot.getValue(SetEventFragment.class);
-
                     Event event = snapshot.getValue(Event.class);
+                    editTextNameOfTheCompetition.setText(event.nameOfTheCompetition);
+                    editTextDistance.setText(event.distance);
+                    editTextСategory.setText(event.category);
+                    editTextResult.setText(event.result);
 
-                    editTextNameOfTheCompetition.setText(event.getValNameOfTheCompetition());
                 }
                 else {
-                    //textEvent.setText("null");
+                    editTextNameOfTheCompetition.setText(null);
+                    editTextDistance.setText(null);
+                    editTextСategory.setText(null);
+                    editTextResult.setText(null);
+
                 }
             }
 
@@ -131,27 +135,24 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         ConstraintLayout constraintLayout = (ConstraintLayout) getLayoutInflater()
                 .inflate(R.layout.dialog_set_event, null);
+        editTextNameOfTheCompetition = constraintLayout.findViewById(R.id.editTextNameOfTheCompetition);
+        editTextDistance = constraintLayout.findViewById(R.id.editTextDistance);
+        editTextСategory = constraintLayout.findViewById(R.id.editTextСategory);
+        editTextResult = constraintLayout.findViewById(R.id.editTextResult);
         saveEventButton = constraintLayout.findViewById(R.id.saveEventButton);
         saveEventButton.setOnClickListener( v-> {
-            editTextNameOfTheCompetition = constraintLayout.findViewById(R.id.editTextNameOfTheCompetition);
-            editTextDistance = constraintLayout.findViewById(R.id.editTextDistance);
-            editTextСategory = constraintLayout.findViewById(R.id.editTextСategory);
-            editTextResult = constraintLayout.findViewById(R.id.editTextResult);
-            String mainValNameOfTheCompetition = editTextNameOfTheCompetition.getText().toString();
-            String mainValDistance = editTextDistance.getText().toString();
-            String mainValСategory = editTextСategory.getText().toString();
-            String mainValResult = editTextResult.getText().toString();
-            membersOfEvent.add(new Event
-                    (mainValNameOfTheCompetition,
-                    mainValDistance,
-                    mainValСategory,
-                    mainValResult));
 
 
 
 
-            eventDatabaseReference.child(stringDateSelected).setValue(membersOfEvent);
-            membersOfEvent.clear();
+            String id = stringDateSelected;
+            String nameOfTheCompetition = editTextNameOfTheCompetition.getText().toString();
+            String distance = editTextDistance.getText().toString();
+            String category = editTextСategory.getText().toString();
+            String result = editTextResult.getText().toString();
+
+            Event newEvent = new Event(id, nameOfTheCompetition, distance, category, result);
+            eventDatabaseReference.child(stringDateSelected).setValue(newEvent);
 
 
         });

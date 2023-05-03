@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="@color/white"
-    tools:context=".SetEventFragment">
+    android:background="@color/white">
 
 
     <EditText
         android:id="@+id/editTextNameOfTheCompetition"
-        android:layout_width="220dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
+        android:hint="@string/NameOfTheCompetition"
         android:inputType="textPersonName"
-        android:text="@string/NameOfTheCompetition"
+        android:textColorHint="#857F7F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,10 +25,11 @@
         android:id="@+id/editTextDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="@string/distance"
         android:inputType="textPersonName"
-        android:text="@string/distance"
+        android:textColorHint="#857F7F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNameOfTheCompetition" />
@@ -37,12 +38,12 @@
         android:id="@+id/editTextСategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="@string/category"
         android:inputType="textPersonName"
-        android:text="@string/category"
+        android:textColorHint="#857F7F"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDistance" />
 
@@ -50,10 +51,11 @@
         android:id="@+id/editTextResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="@string/result"
         android:inputType="textPersonName"
-        android:text="@string/result"
+        android:textColorHint="#857F7F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextСategory" />
