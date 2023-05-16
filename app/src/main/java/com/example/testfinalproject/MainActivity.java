@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private CalendarView mainCalendar;
@@ -41,15 +43,15 @@ public class MainActivity extends AppCompatActivity {
     private ArrayAdapter<String> arrayAdapter;
     private List<String> listData;
     private Button goToSecondActivity;
-    private Button goToThirdActivity;
-    private Button goToFourthActivity;
+    private ImageButton goToThirdActivity;
+    private ImageButton goToFourthActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         goToSecondActivity = findViewById(R.id.goToSecondActivity);
         goToThirdActivity = findViewById(R.id.goToThirdActivity);
